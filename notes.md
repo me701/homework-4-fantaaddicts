@@ -3,7 +3,9 @@
 ## Assumptions
 
 1. Heat transfer through aluminum can is negligible.
-
+2. While liquid stiring, forced covnection is added.
+3. Throughout the entire process conduciton is taking place.
+4. 1D problem because infinite cylinder height.
 
 ## Paramters
 Cylindical Can  
