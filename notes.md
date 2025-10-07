@@ -12,7 +12,7 @@ Height = 12 cm
 
 ### Temperatures
 $T_{hot car}$ = 95 F  
-$T_{/infty}$ = 32 F  
+$T_{\inf}$ = 32 F  
 $T_{beverage} = 45 F  
 
 ### Time of rotation
