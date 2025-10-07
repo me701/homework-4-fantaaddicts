@@ -6,6 +6,10 @@
 2. While liquid stiring, forced covnection is added.
 3. Throughout the entire process conduciton is taking place.
 4. 1D problem because infinite cylinder height.
+5. No heat generation.
+6. Consistent volume and surface area.
+7. Constant density for the water.
+8. Temperature gradients within the can negligible and lumped capacitance method used for conduction.
 
 ## Paramters
 Cylindical Can  
