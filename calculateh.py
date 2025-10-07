@@ -70,19 +70,18 @@ def calculate_h(T_bar, convection_type):
         
     return 0
 
-T_max_K = 308
-T_min_K = 273
+T_max = 308
+T_min = 273
 
-# Generate T array (Kelvin) and convert for plotting
-T_bulk_K = np.linspace(308, 273, 100)
+T_bar = np.linspace(308, 273, 100)
 
-h_forced = np.array([calculate_h(T, 'forced') for T in T_bulk_K])
-h_natural = np.array([calculate_h(T, 'natural') for T in T_bulk_K])
+h_forced = np.array([calculate_h(T, 'forced') for T in T_bar])
+h_natural = np.array([calculate_h(T, 'natural') for T in T_bar])
 
 # Plotting setup
 plt.figure(figsize=(10, 5))
-plt.plot(T_bulk_K, h_forced, label='Forced Convection (Spinning)', linewidth=2)
-plt.plot(T_bulk_K, h_natural, label='Natural Convection (Sitting)', linewidth=2, linestyle='--')
+plt.plot(T_bar, h_forced, label='Forced Convection (Spinning)', linewidth=2)
+plt.plot(T_bar, h_natural, label='Natural Convection (Sitting)', linewidth=2, linestyle='--')
 
 plt.xlabel('Beverage Temperature (K)')
 plt.ylabel('Heat Transfer Coefficient, h (W/m²·K)')
