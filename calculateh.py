@@ -6,8 +6,8 @@ rho = 1000.0    # Density (kg/m^3)
 D = 0.06        # Diameter (m)
 H = 0.12        # Height (m)
 g = 9.81        # Gravity (m/s²)
-beta = 0.0002   # Volumetric expansion coeff. for cold water
-v_spin = 2*np.pi*0.03    # Assumed Peripheral Spinning Velocity (m/s)
+beta = 0.0002   # Volumetric expansion coeff. for water
+v_spin = 2*np.pi*0.03    # Spin Velocity (m/s)
 
 # T dependent material properties functions
 # Viscosity (mu, N·s/m²)
@@ -85,7 +85,8 @@ plt.plot(T_bar, h_natural, label='Natural Convection (Sitting)', linewidth=2, li
 
 plt.xlabel('Beverage Temperature (K)')
 plt.ylabel('Heat Transfer Coefficient, h (W/m²·K)')
-plt.title('Dynamic Heat Transfer Coefficient (h) as a Function of Temperature')
+plt.title('Heat Transfer Coefficient (h) as a Function of Temperature')
 plt.legend()
 plt.grid(True)
+
 plt.show()
