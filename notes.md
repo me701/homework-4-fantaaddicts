@@ -22,4 +22,9 @@ $T_{\infty}$ = 32 F
 $T_{beverage}$ = 45 F  
 
 ### Time of rotation
-30 seconds, 5 min break, 30 seconds, 5 min break, 30 seconds  
+30 seconds, 5 min break, 30 seconds, 5 min break, 30 seconds
+
+### Needs
+Uncertainty quantification
+Unit tests
+Refine internal modeling assumption
