@@ -25,6 +25,6 @@ $T_{beverage}$ = 45 F
 30 seconds, 5 min break, 30 seconds, 5 min break, 30 seconds
 
 ### Needs
-Uncertainty quantification
-Unit tests
-Refine internal modeling assumption
+1. Uncertainty quantification
+2. Unit tests
+3. Refine internal modeling assumption
