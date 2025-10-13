@@ -30,8 +30,8 @@ cp_fluid_func = np.poly1d(np.polyfit(T_prop_data, cp_fluid_data, 2))
 mu_fluid_func = np.poly1d(np.polyfit(T_prop_data, mu_fluid_data, 2))
 
 # Other properties and constants
-rho_water = 999.6
-beta = 0.113e-3
+rho_water = 1000
+beta = 0.0004
 g = 9.81
 
 # --- Thermal Properties of Can Contents (for simulation grid) ---
