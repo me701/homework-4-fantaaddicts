@@ -85,32 +85,17 @@ def run_simulation(h_s, h_w):
             phase = "Final Wait"
             h_val = h_w
             
-        # --- DYNAMIC SYSTEM CONSTRUCTION ---
-        # The system matrix A and vector b must be rebuilt at every step
-        # because k (and thus A) depends on the temperature T from the previous step.
-        
         # 1. Create a 2D field of k values based on the current temperature field T
         k_field = k_of_T(T.reshape((N_z, N_r)))
         
-        # 2. Define a kfun that simply looks up the value from our pre-calculated field
+        # 2. Define a kfun that looks up the value from our pre-calculated field
         kfun = lambda r, z, i, j: k_field[j, i]
         
         # 3. Build the system using this new kfun
-        # Note: We modify starter_code on the fly here to accept i,j indices.
-        # This is a bit of a hack, but avoids rewriting the whole file.
-        # A more robust solution would be to modify the construct_system function.
-        
-        # We need a kfun that the original code can call. We will create a k-field
-        # for the entire grid first, based on the previous step's T.
         K_grid = k_of_T(T).reshape((N_z, N_r))
-        
-        # This kfun will look up the pre-calculated K value for the (i, j) cell.
-        # The original construct_system doesn't pass i and j, so we'll adapt by
-        # rebuilding the K matrix inside the function based on our T field.
         
         def construct_system_with_temp(r_points, z_points, k_temperature_func, qppp,
                                        BC_z, BC_r_top, Bc_r_bottom, temp_field):
-            # This is a wrapper around the original function to handle the T-dependency
             
             # Create a K-field based on the temperature from the previous timestep
             K_field = k_temperature_func(temp_field).reshape((N_z, N_r))
