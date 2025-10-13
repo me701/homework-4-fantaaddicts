@@ -175,5 +175,3 @@ for filename in image_filenames:
 os.rmdir("animation_frames")
 print("Cleanup complete.")
 
-# Plot this
-plt.plot
