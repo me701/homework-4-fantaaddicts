@@ -86,7 +86,7 @@ def get_h_values(T_surface_avg, rpm):
 # 3. Simulation
 
 def calculate_cooling_time(rpm, cp_func_factor, k_func_factor, h_factor):
-    """Runs a silent simulation with uncertainty factors."""
+    """Runs the can cooling simulation with uncertainty factors."""
     T = np.full(N_total, T_initial)
     t = 0.0
     center_idx = 0 + (N_z // 2) * N_r
@@ -133,7 +133,7 @@ def calculate_cooling_time(rpm, cp_func_factor, k_func_factor, h_factor):
 
 # We didn't know how to do an animation so the oracle helped :)
 def run_and_animate_baseline(rpm):
-    """Runs the baseline simulation and saves animation frames."""
+    """Runs the can cooling simulation and saves animation frames."""
     animation_dir = "animation_frames"
     if not os.path.exists(animation_dir): os.makedirs(animation_dir)
     filenames = []
