@@ -5,20 +5,18 @@ import time as ostime
 import os
 import imageio
 
-# ==============================================================================
-# 1. SETUP PARAMETERS & PHYSICAL PROPERTIES
-# ==============================================================================
+# 1. Value setup
 
-# --- Geometry & Discretization
+# Geometry & Discretization
 R_can, H_can = 0.03, 0.12
 D_can = 2 * R_can
 N_r, N_z = 15, 30
 N_total = N_r * N_z
 
-# --- Temperatures
+# Temperatures
 T_initial, T_inf, T_target = 308.0, 273.15, 280.0
 
-# --- Temperature-Dependent Properties of Water (for h-calculations) ---
+# Temp dep  properties of water
 T_prop_data = np.array([273.15, 275, 280, 290, 295, 300, 305, 310])
 k_fluid_data = np.array([0.560, 0.560, 0.568, 0.590, 0.598, 0.607, 0.616, 0.624])
 cp_fluid_data = np.array([4217, 4217, 4208, 4195, 4191, 4181, 4178, 4178])
@@ -34,7 +32,7 @@ rho_water = 1000
 beta = 0.0004
 g = 9.81
 
-# --- Thermal Properties of Can Contents (for simulation grid) ---
+# Thermal Properties 
 k_can_data = np.array([560, 560, 568, 590, 598, 607, 616, 624]) * 1e-3
 k_coeffs = np.polyfit(T_prop_data, k_can_data, 1)
 k_of_T_base = np.poly1d(k_coeffs)
@@ -50,17 +48,15 @@ k_uncertainty = np.max(np.abs(k_can_data - k_predicted) / k_can_data)
 cp_predicted = cp_of_T_base(T_prop_data)
 cp_uncertainty = np.max(np.abs(cp_can_data - cp_predicted) / cp_can_data)
 
-h_uncertainty = 0.10 # 10% uncertainty assumed for the correlations themselves
+h_uncertainty = 0.10 # 10% uncertainty assumed 
 
-# --- Time stepping & Grid ---
+# Time stepping & Grid 
 dt = 2.0
 r_edge, z_edge = np.linspace(0, R_can, N_r + 1), np.linspace(0, H_can, N_z + 1)
 r_center, z_center = (r_edge[1:] + r_edge[:-1]) / 2, (z_edge[1:] + z_edge[:-1]) / 2
 qppp = lambda r, z: 0.0
 
-# ==============================================================================
-# 2. DYNAMIC H-VALUE CALCULATION
-# ==============================================================================
+# 2. h value calculation
 
 def get_h_values(T_surface_avg, rpm):
     """Calculates h_natural and h_forced based on the current surface temp."""
@@ -87,9 +83,7 @@ def get_h_values(T_surface_avg, rpm):
     h_forced = Nu_forced * k_f / D_can
     return h_natural, h_forced
 
-# ==============================================================================
-# 3. SIMULATION & ANALYSIS FUNCTIONS
-# ==============================================================================
+# 3. Simulation
 
 def calculate_cooling_time(rpm, cp_func_factor, k_func_factor, h_factor):
     """Runs a silent simulation with uncertainty factors."""
@@ -137,6 +131,7 @@ def calculate_cooling_time(rpm, cp_func_factor, k_func_factor, h_factor):
         T_center = T[center_idx]
     return t
 
+# We didn't know how to do an animation so the oracle helped :)
 def run_and_animate_baseline(rpm):
     """Runs the baseline simulation and saves animation frames."""
     animation_dir = "animation_frames"
@@ -201,9 +196,7 @@ def run_and_animate_baseline(rpm):
     print(f"\nAnimation simulation finished in {ostime.time() - start_time:.2f} seconds.")
     return filenames
 
-# ==============================================================================
-# 4. RUN ANALYSIS & ANIMATION
-# ==============================================================================
+# outputs
 print("--- Calculating 95% Confidence Interval for Cooling Time ---")
 
 # Worst-Case (Slowest)
