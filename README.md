@@ -20,6 +20,6 @@ Your Tasks:
 
 Deliverable: self contained Python(?) solution with adequate commenting (via docstrings) and testing (via `unittest`).
 
-MAIN FILE TO RUN: 
+MAIN FILE TO RUN: HW4cancooling.py
 
-PLEASE READ FantaAddictsHW4.pdf
+PLEASE READ: FantaAddictsHW4.pdf
